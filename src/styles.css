@@ -1,0 +1,14 @@
+/* Flex Container */
+.container {
+	margin: 0 auto;
+	display: flex;
+}
+
+.row {
+	flex-direction: row;
+}
+
+.item {
+	flex: 1;
+	margin: 0 auto;
+}

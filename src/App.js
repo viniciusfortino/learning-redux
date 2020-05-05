@@ -2,15 +2,20 @@ import React from 'react';
 import { Provider } from 'react-redux';
 
 import store from './store'
-import SideBar from './components/SideBar';
-import VideoContainer from './components/VideoContainer';
+import './styles.css'
+import ProductStore from './components/ProductStore';
+import Cart from './components/Cart';
+import CartTotal from './components/CartTotal';
 
 function App() {
   return (
     <div className="App">
       <Provider store={store}>
-        <SideBar />
-        <VideoContainer />
+        <div className="container row">
+          <ProductStore />
+          <Cart />
+          <CartTotal />
+        </div>
       </Provider>
     </div>
   );
