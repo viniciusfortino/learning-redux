@@ -2,7 +2,21 @@ import React, { Component } from 'react';
 
 import { connect } from 'react-redux';
 
-const SideBar = ({ modules }) => (
+/*
+An action must have a key type, that say what the action to be used and must be inique
+after the key type, we can send any data.
+we use Dispacth function to send actions to redux, and that actions will be listened by all reducers 
+in out application
+*/
+function toggleLesson(module, lesson) {
+    return {
+        type: 'TOGGLE_LESSON',
+        module,
+        lesson
+    }
+}
+
+const SideBar = ({ modules, dispatch }) => (
     <aside>
         <h1>Modules</h1>
         {
@@ -11,7 +25,11 @@ const SideBar = ({ modules }) => (
                     <h2>{module.title}</h2>
                     <ul>
                         {module.lessons.map(lesson => (
-                            <li key={lesson.id}>{lesson.title}</li>
+                            <li key={lesson.id}>{lesson.title}
+                                <button onClick={() => dispatch(toggleLesson(module, lesson))}>
+                                    Select
+                                </button>
+                            </li>
                         ))}
                     </ul>
                 </div>
