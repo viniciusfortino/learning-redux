@@ -12,7 +12,7 @@ const CartPrice = ({ cart, total, addProduct, setShipping }) => (
             Itens: <strong>{cart.items.length}</strong>
         </p>
         <p>
-            Shipping Value: <strong>{cart.shippingValue}</strong>
+            Shipping Value: <strong>{cart.cost_in_credits}</strong>
         </p>
         <p>
             Total:  <strong>{total}</strong>

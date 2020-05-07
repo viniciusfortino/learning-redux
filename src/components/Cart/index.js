@@ -8,7 +8,7 @@ const Cart = ({ cart }) => (
         <ul>
             {
                 cart.items.map(item => (
-                    <li key={item.id}>{item.title}</li>
+                    <li key={item.name}>name: {item.name} model: {item.model}</li>
                 ))
             }
         </ul>

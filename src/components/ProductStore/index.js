@@ -4,30 +4,36 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import * as StoreProductActions from '../../store/actions/storeProduct';
+class ProductStore extends Component {
+    constructor(props) {
+        super(props);
+        props.fetchingData()
+    }
 
-const ProductStore = ({ storeProduct, addToCart }) => (
-    <div className="item">
-        <h1>Product Store</h1>
-        {
-            storeProduct.map(productCategory => (
-                <div key={productCategory.id}>
-                    <h2>{productCategory.title}</h2>
-                    <ul>
-                        {productCategory.productsSubCategory.map(productSubCategory => (
-                            <li key={productSubCategory.id}>
-                                <strong>Name: </strong>{productSubCategory.title}
-                                <strong>Price: </strong>{productSubCategory.price}
-                                <button onClick={() => addToCart(productSubCategory)}>
+    render() {
+        const { storeProduct, addToCart } = this.props;
+        return (
+            <div className="item">
+                <h1>Vehicles Product List</h1>
+                <div>
+                    {
+                        storeProduct.productList.map(product => (
+                            <div key={product.name}
+                                style={{ borderBottom: "1px solid black" }}>
+                                <p>Name: {product.name}</p>
+                                <p>Model: {product.model}</p>
+                                <p>Price: {product.cost_in_credits}</p>
+                                <button onClick={() => addToCart(product)}>
                                     Add to Cart
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
+                                    </button>
+                            </div>
+                        ))
+                    }
                 </div>
-            ))
-        }
-    </div>
-);
+            </div>
+        );
+    }
+}
 
 const mapStateToProps = ({ storeProduct }) => ({
     storeProduct
